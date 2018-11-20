@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-peer/9.1.2/simplepeer.min.js"></script>
+    <style>
+      #outgoing {
+        width: 600px;
+        word-wrap: break-word;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"
+    />
+  </head>
+  <body>
+    <div class="container" id="initial">
+      <div class="row">
+        <div class="column column-80 column-offset-10 ">
+          <form>
+            <textarea id="incoming"></textarea>
+            <button type="submit">submit</button>
+          </form>
+          <pre id="outgoing"></pre>
+        </div>
+      </div>
+    </div>
+    <div class="container ">
+      <div class="row ">
+        <div class="column column-50 column-offset-25 ">
+          <hr />
+          <form id="chatform">
+            <fieldset>
+              <label for="chatroom">chatroom</label>
+              <main
+                id="chatroom"
+                style="height: 40vh; border: 3px dotted #ccc; overflow-y: scroll"
+              ></main>
+
+              <label for="message">message</label>
+              <input type="text" name="message" id="message" />
+              <button class="column" id="send_message" type="submit">
+                Send
+              </button>
+              <hr />
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const chatroom = document.getElementById("chatroom");
+      const message = document.getElementById("message");
+      const sendMessage = document.getElementById("send_message");
+
+      var p = new SimplePeer({
+        initiator: location.hash === "#1",
+        trickle: false
+      });
+
+      p.on("error", function(err) {
+        console.log("error", err);
+      });
+
+      p.on("signal", function(data) {
+        console.log("SIGNAL", JSON.stringify(data));
+        document.querySelector("#outgoing").textContent = JSON.stringify(data);
+      });
+
+      document.querySelector("form").addEventListener("submit", function(ev) {
+        ev.preventDefault();
+        p.signal(JSON.parse(document.querySelector("#incoming").value));
+      });
+
+      p.on("connect", function() {
+        p.send(`Connected`);
+      });
+
+      p.on("data", function(data) {
+        console.log("data: " + data);
+        chatroom.insertAdjacentHTML("beforeend", `<p>${data}</p>`);
+        chatroom.scrollTop = chatroom.scrollHeight;
+      });
+
+      sendMessage.addEventListener("click", e => {
+        console.log("clicked send");
+        e.preventDefault();
+        chatroom.insertAdjacentHTML(
+          "beforeend",
+          `<p>${p.initiator ? "Albert" : "Smarty"}: ${message.value}</p>`
+        );
+        p.send(`${p.initiator ? "Albert" : "Smarty"}: ${message.value}`);
+        message.value = "";
+      });
+    </script>
+  </body>
+</html>

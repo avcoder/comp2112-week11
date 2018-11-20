@@ -206,11 +206,11 @@
           <div class="wrap aligncenter">
             <h1>
               <strong
-                >Vue ecosystem | webRTC, <br />
-                ES modules, publishing to npm, webpack/parcel
+                >webRTC, ES modules, npm, webpack/parcel<br />
+                Vue ecosystem
               </strong>
             </h1>
-            <p class="text-intro">Week 10 <br />COMP 2112</p>
+            <p class="text-intro">Week 11 <br />COMP 2112</p>
             <p>
               <a
                 href="https://github.com/avcoder/comp2112-week11"
@@ -246,7 +246,10 @@
                 </li>
                 <li>
                   <h2>Vue ecosystem</h2>
-                  <p>Storybook, Vuetify, Vuex, Router, Testing</p>
+                  <p>
+                    vue ui (CLI), Storybook, Vuetify, Vuex, Router, Testing, Vue
+                    Native, nuxt, Vuepress
+                  </p>
                 </li>
               </ul>
             </div>
@@ -255,12 +258,305 @@
           <!-- .end .wrap -->
         </section>
 
+        <section class="bg-purple">
+          <!-- .wrap = container (width: 90%) -->
+          <div class="wrap">
+            <div class="grid vertical-align">
+                <div class="column">
+                    <h2><strong>webRTC</strong></h2>
+                    <ul class="flexblock specs">
+                        <li>
+                          GOOD: webRTC is a free, open source API that enables modern browser-to-browser/P2P
+                          communication
+                        </li>
+                        <li>GOOD: It's capable of text chat, and real-time voice (microphone), video (webcam) communication</li>
+                        <li>BAD: you have connectivity problems (corporate firewalls), uses any port > 1024 so hard to config firewall.</li>
+                        <li><a href="https://www.callstats.io/blog/2017/10/17/sdk-comparison">List of WebRTC products</a></li>
+                      </ul>
+        
+                </div>
+                <div class="column">
+                    <img src="./static/images/webrtc.png" alt="webrtc" style="width:70%" /> 
+                    <br>
+                    <p>Server(s) handshakes the 2 computer's IP addresses, port# and a protocol (UDP or TCP)</p>
+                </div>
+            </div>
+          </div>
+            <!-- .end .bg-white shadow -->
+          </div>
+          <!-- .end .wrap -->
+        </section>
+
+        <section class="bg-black">
+          <!-- .wrap = container (width: 90%) -->
+          <div class="wrap grid">
+            <div class="column">
+              <div class="bg-white shadow">
+                <ul class="flexblock reasons">
+                  <li class="">
+                    <p>
+                      Create a new webpage and include the following<br />&lt;script
+                      src="https://cdnjs.cloudflare.com/ajax/libs/simple-peer/9.1.2/simplepeer.min.js">&lt;/script>
+                    </p>
+                  </li>
+                  <li class="">
+                    <p>
+                      Do
+                      <a href="https://www.npmjs.com/package/simple-peer"
+                        >this example</a
+                      >
+                      except change the following:
+                    </p>
+                    <p>
+                      Don't need var Peer = require() anymore since we used the
+                      script tag above
+                    </p>
+                    <p>
+                      Change var p = new Peer(..) to var p = new SimplePeer(..)
+                    </p>
+                  </li>
+                  <li class="">
+                    Open up the first tab but add #1 at end:
+                    http://localhost:8080/index.html#1
+                  </li>
+                  <li class="">
+                    Open up second tab but don't add #1:
+                    http://localhost:8080/index.html
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="column">
+              <ul class="flexblock reasons">
+                <li class="">
+                  In first tab, after a few seconds, you should see a long line
+                  of text. Copy/paste that into second tab's box and click
+                  button.
+                </li>
+                <li class="">
+                  In the second tab, you'll then see a new long line of text.
+                  Copy/paste that line into first tab's box and click button.
+                </li>
+                <li class="">Goto console log for both tabs.</li>
+                <li class="">
+                  In first tab's console, type: p.send('hello there')
+                </li>
+                <li class="">
+                  Check second tab's console. You should see message! Try
+                  responding back with your own p.send()
+                </li>
+              </ul>
+            </div>
+            <!-- .end .bg-white shadow -->
+          </div>
+          <!-- .end .wrap -->
+        </section>
+
+        <section class="bg-primary">
+          <div class="wrap">
+            <div class="content-left">
+              <h3>webRTC example</h3>
+              <h6>
+                Text only:
+                <a href="https://week11c-yaeijsysmk.now.sh/webrtc.html#1"
+                  >https://week11c-yaeijsysmk.now.sh/webrtc.html#1</a
+                >
+              </h6>
+              <br /><br />
+              <h6>
+                Video + audio:
+                <a href="https://week11b-nanmhjkwwx.now.sh/webvid#1"
+                  >https://week11b-nanmhjkwwx.now.sh/webvid#1</a
+                >
+              </h6>
+            </div>
+            <!-- end .content-left -->
+            <div class="content-left">
+              <!-- <div class="embed"> = Responsive -->
+              <div class="embed">
+                <div
+                  data-youtube
+                  data-youtube-id="Gx7jqbBjaDE"
+                  data-autoplay
+                  data-no-controls
+                ></div>
+              </div>
+              <!-- end .embed -->
+            </div>
+            <!-- end .content-left -->
+          </div>
+          <!-- .end .wrap -->
+        </section>
+
+        <section class="">
+            <!-- .wrap = container (width: 90%) -->
+            <div class="wrap size-50 aligncenter">
+              <h2><strong>JS Tooling: from then to now</strong></h2>
+              <div class="bg-white shadow">
+                <ul class="flexblock reasons">
+                  <li>
+                    <h2>In the beginning...</h2>
+                    <p>Building a website via plain HTML and JS</p>
+                  </li>
+                  <li>
+                    <h2>Pain point: annoying to find/download new versions of libraries</h2>
+                    <p>Solution: package managers</p>
+                  </li>
+                  <li>
+                    <h2>Pain point: digging through node_modules/ to find path of each package</h2>
+                    <p>Solution: auto-build a single script file via module bundlers</p>
+                  </li>
+                  <li>
+                    <h2>Pain point: running webpack each time we change js</h2>
+                    <p>
+                      Solution: automate different parts of the build process via task runners
+                    </p>
+                  </li>
+                  <li>
+                      <h2>Pain point: ES6+ can't be read in older browsers</h2>
+                      <p>
+                        Solution: transpilers
+                      </p>
+                    </li>
+                </ul>
+              </div>
+              <!-- .end .bg-white shadow -->
+            </div>
+            <!-- .end .wrap -->
+          </section>        
+
+        <section class="bg-primary">
+            <!--.wrap = container (width: 90%) -->
+            <div class="wrap size-90 aligncenter">
+              <div class="grid vertical-align">
+                <div class="column">
+    
+    
+                  <div class="bg-white shadow">
+<pre><code><h5>&lt;!DOCTYPE html>
+&lt;html lang="en">
+  &lt;head>
+    &lt;meta charset="UTF-8">
+    &lt;title>JavaScript Example&lt;/title>
+    &lt;script src="index.js">&lt;/script>
+  &lt;/head>
+  &lt;body>
+  &lt;h1>Hello from HTML!&lt;/h1>
+  &lt;/body>
+&lt;/html>
+</h5></code></pre>
+                  </div>
+    
+                </div>
+                <div class="column">
+                  <h2>In the beginning...</h2>
+                  <br>
+                  <ul>
+                    <li class="text-intro">Where does the browser assume index.js is located?</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- .end .bg-white shadow -->
+            </div>
+            <!-- .end .wrap -->
+          </section>
+
+          <section class="">
+              <!--.wrap = container (width: 90%) -->
+              <div class="wrap size-90 aligncenter">
+                <div class="grid vertical-align">
+                  <div class="column">
+                      <img src="./static/images/async-defer.svg" alt="async defer differences">
+                  </div>
+                </div>
+                <!-- .end .bg-white shadow -->
+              </div>
+              <!-- .end .wrap -->
+            </section>          
+
+          <section class="bg-primary">
+              <!--.wrap = container (width: 90%) -->
+              <div class="wrap size-90 aligncenter">
+                <div class="grid vertical-align">
+                  <div class="column">
+      
+      
+                    <div class="bg-white shadow">
+<pre><code><h5>moment().format('MMMM Do YYYY, h:mm:ss a');
+</h5></code></pre>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <h2>Including other JS scripts</h2>
+                    <br>
+                    <ul>
+                      <li class="text-intro">Let's say we wanted to include moment.js library.</li>
+                      <li class="text-intro">How would you download it in order to use it?</li>
+                      <li class="text-intro">Goto <a href="https://momentjs.com/">https://momentjs.com/</a></li>
+                      <li class="text-intro">Download it</li>
+                      <li class="text-intro">Pain point: annoying to find/download new versions of libraries</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- .end .bg-white shadow -->
+              </div>
+              <!-- .end .wrap -->
+            </section>               
+            
+              <section class="bg-primary">
+                  <!--.wrap = container (width: 90%) -->
+                  <div class="wrap size-90 aligncenter">
+                    <div class="grid vertical-align">
+                      <div class="column">
+          
+          
+                        <div class="bg-white shadow">
+    <pre><code><h5>moment().format('MMMM Do YYYY, h:mm:ss a');
+    </h5></code></pre>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <h2>Including other JS scripts</h2>
+                        <br>
+                        <ul>
+                          <li class="text-intro">Let's say we wanted to include moment.js library.</li>
+                          <li class="text-intro">How would you download it in order to use it?</li>
+                          <li class="text-intro">Goto <a href="https://momentjs.com/">https://momentjs.com/</a></li>
+                          <li class="text-intro">Download it</li>
+                          <li class="text-intro">Pain point: annoying to find/download new versions of libraries</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- .end .bg-white shadow -->
+                  </div>
+                  <!-- .end .wrap -->
+                </section>      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section>
           <!-- .wrap = container (width: 90%) -->
           <div class=" wrap ">
             <h2 class="alignleft "><strong>References</strong></h2>
           </div>
           <ol>
+            <li>
+              https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70
+            </li>
+            <li>https://www.youtube.com/watch?v=mJTeWEZLO_4</li>
+            <li>https://developers.google.com/web/fundamentals/primers/modules</li>
             <li></li>
           </ol>
 
