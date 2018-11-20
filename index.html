@@ -503,6 +503,34 @@
               <!-- .end .wrap -->
             </section>               
             
+            <section class="">
+                <!--.wrap = container (width: 90%) -->
+                <div class="wrap size-90 aligncenter">
+                  <div class="grid vertical-align">
+                    <div class="column">                
+                      <div class="bg-white shadow">
+                        <a href="https://www.npmjs.com/">
+<img src="./static/images/npm.PNG" alt="npm website">
+</a>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <h3>Using a JavaScript package manager (npm)</h3>
+                      <br>
+                      <ul class="flexblock specs">
+                        <li class="text-intro">In 2010 - several competing JS package managers emerged</li>
+                        <li class="text-intro">In 2013 - Bower was the most popular</li>
+                        <li class="text-intro">In 2015 - Bower was overtaken by npm</li>
+                        <li class="text-intro">In 2016 - yarn competes with npm but it uses npm packages</li>
+                      </ul>
+                      <p>Note: npm invented as the package manager for node.js, a JS server runtime, not frontend.  Using package managers generally involves using a command line, which in the past was never required as a frontend dev.</p>
+                    </div>
+                  </div>
+                  <!-- .end .bg-white shadow -->
+                </div>
+                <!-- .end .wrap -->
+              </section>      
+
               <section class="bg-primary">
                   <!--.wrap = container (width: 90%) -->
                   <div class="wrap size-90 aligncenter">
@@ -511,35 +539,177 @@
           
           
                         <div class="bg-white shadow">
-    <pre><code><h5>moment().format('MMMM Do YYYY, h:mm:ss a');
+    <pre><code><h5>// create package.json file to keep track of configs
+npm init -y
+
+// install moment
+npm i moment
     </h5></code></pre>
                         </div>
                       </div>
                       <div class="column">
-                        <h2>Including other JS scripts</h2>
-                        <br>
-                        <ul>
-                          <li class="text-intro">Let's say we wanted to include moment.js library.</li>
-                          <li class="text-intro">How would you download it in order to use it?</li>
-                          <li class="text-intro">Goto <a href="https://momentjs.com/">https://momentjs.com/</a></li>
-                          <li class="text-intro">Download it</li>
-                          <li class="text-intro">Pain point: annoying to find/download new versions of libraries</li>
+                        <h2>The npm way <a href="https://momentjs.com/"><img src="./static/images/npminstall.PNG" alt="npm install moment"></a></h2>
+                        
+                        <ul class="flexblock specs">
+                          <li class="text-intro">npm command downloads moment.js into a folder called node_modules/</li>
+                          <li class="text-intro">npm also modifies package.json to keep track of dependencies</li>
+                          <li class="text-intro">Modify our js file to include new library</li>
+                          <li class="text-intro">GOOD: no longer have to manually download moment.js from website</li>
+                          <li class="text-intro">BAD: we're digging through node_modules folder to find path, then manually including it in HTML page</li>
                         </ul>
                       </div>
                     </div>
                     <!-- .end .bg-white shadow -->
                   </div>
                   <!-- .end .wrap -->
-                </section>      
+                </section>        
+
+                <section class="bg-green">
+                    <!--.wrap = container (width: 90%) -->
+                    <div class="wrap size-50 aligncenter">
+                      <div class="grid vertical-align">
+                        <div class="column">
+                            <img src="./static/images/dinosaur1.png" alt="dinosaur comic">
+                        </div>
+                      </div>
+                      <!-- .end .bg-white shadow -->
+                    </div>
+                    <!-- .end .wrap -->
+                  </section>                          
+
+                <section class="">
+                    <!--.wrap = container (width: 90%) -->
+                    <div class="wrap size-90 aligncenter">
+                      <div class="grid vertical-align">
+                        <div class="column">
+            
+            
+                          <div class="bg-white shadow">
+      <pre><code><h5>// index.js
+var moment = require('moment');
+console.log("Hello from JavaScript!");
+console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+      </h5></code></pre>
+                          </div>
+                        </div>
+                        <div class="column">
+                          <h3>Problem: browsers couldn't import code **</h3>
+                          <ul class="flexblock specs">
+                            <li class="text-intro" title="Because JS was designed to run only in the browser, with no access fo file system of client's computer for security. So for the longest time, organizing JS code in multiple files required loading each file sequentially with shared global vars (ex: moment.js)">Why wasn't JS designed to import code from one file to another?</li>
+                            <li class="text-intro">In 2009 - CommonJS was invented which supported modules (import/export code) without resorting to global vars</li>
+                            <li class="text-intro">node.js - JS runtime designed to run on server (has file system access)</li>
+                            <li class="text-intro" title="try document.querySelector, fetch, setTimeout">What's the difference between node and browser's console?</li>
+                            <li class="text-intro" title="require is not defined since the browser doesn't have access to the file system; loading files has to be done dynamically, either synchronously (which slows down execution) or async (which has timing issues)">Now try running our js code in the browser - what happens?</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <!-- .end .bg-white shadow -->
+                      <small>** As of recently, that statement isn't true anymore for modern browsers</small>
+                    </div>
+                    <!-- .end .wrap -->
+                  </section>        
+  
+                  <section class="">
+                      <!--.wrap = container (width: 90%) -->
+                      <div class="wrap size-90 aligncenter">
+                        <div class="grid vertical-align">
+                          <div class="column">                
+                            <div class="bg-white shadow">
+                              <a href="https://webpack.js.org/">
+      <img src="./static/images/webpack.PNG" alt="webpack">
+      </a>
+                            </div>
+                          </div>
+                          <div class="column">
+                            <h3>Webpack / <a href="https://parceljs.org/">Parcel</a></h3>
+                            <br>
+                            <ul class="flexblock specs">
+                              <li class="text-content">a JS module bundler is a tool that gets around previous problem with a build step</li>
+                              <li class="text-content">since module bundler does have access to file system, it can find all our require statements (which is invalid browser JS syntax) and replace them with the actual contents of each required file. The final result is a single bundled JS file (with no require statements)</li>
+                              <li class="text-content">In 2011 - Browserify pioneered the usage of node.js style require statements on the frontend</li>
+                              <li class="text-content">In 2015 - Webpack became (and still is) the most popular</li>
+                              <li class="text-content">In 2017 - Parcel challenged webpack's configuration complexity by offering simple zero-config</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- .end .bg-white shadow -->
+                      </div>
+                      <!-- .end .wrap -->
+                    </section>      
+
+  <section class="bg-primary">
+      <!--.wrap = container (width: 90%) -->
+      <div class="wrap size-90 aligncenter">
+        <div class="grid vertical-align">
+          <div class="column">
 
 
+            <div class="bg-white shadow">
+<pre><code><h5>// install a module bundler
+npm install -g parcel-bundler
 
+// run it on our html page
+parcel history.html
 
+// build it
+parcel build history.html
 
+// babel?
+const name = 'Albert';
+console.log(`Hello ${name} from JavaScript!`);
+</h5></code></pre>
+            </div>
+          </div>
+          <div class="column">
+            <h2>Using module bundlers</h2>
+            
+            <ul class="flexblock specs">
+              <li class="text-intro">Install a module bundler; for simplicity we'll install Parcel</li>
+              <li class="text-intro">Run parcel on our html page</li>
+              <li class="text-intro">View page's console to see if it works</li>
+              <li class="text-intro">Satisfied, build our .html and .js file</li>
+              <li class="text-intro">View final results in dist/ folder - Where is our code located?</li>
+              <li class="text-intro">Does it use babel? Insert ES6 code, then build, then view code</li>
+            </ul>
+          </div>
+        </div>
+        <!-- .end .bg-white shadow -->
+      </div>
+      <!-- .end .wrap -->
+    </section>        
 
-
-
-
+    <section class="">
+        <!--.wrap = container (width: 90%) -->
+        <div class="wrap size-90 aligncenter">
+          <div class="grid vertical-align">
+            <div class="column">                
+              <div class="bg-white shadow">
+<pre><code><h5>"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "serve": "parcel history.html",
+  "build": "parcel build history.html"
+},
+</h5></code></pre>  
+<p class="">Now that we're invested in using a build step with JS modules, we need a tool that automates parts of that build process (i.e. minifying code, optimizing images, running tests, etc.)</p>              
+              </div>
+            </div>
+            <div class="column">
+              <h3>Task runners (npm scripts)</a></h3>
+              
+              
+              <ul class="flexblock specs">
+                <li class="text-intro">In 2013 - Grunt was the most popular frontend task runner</li>
+                <li class="text-intro">In 2014 - Gulp was the most popular frontend task runner</li>
+                <li class="text-intro">Today - using the scripting capabilities built into npm itself</li>
+                <li class="text-intro">Modify our package.json to include a build script</li>
+                <li class="text-intro">Modify our package.json to include a serve script</li>
+              </ul>
+            </div>
+          </div>
+          <!-- .end .bg-white shadow -->
+        </div>
+        <!-- .end .wrap -->
+      </section>     
 
 
 
