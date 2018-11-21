@@ -238,11 +238,7 @@
                 </li>
                 <li>
                   <h2>ES modules</h2>
-                  <p>History of module systems in JS, to where we are at now</p>
-                </li>
-                <li>
-                  <h2>npm, and module bundlers</h2>
-                  <p>publishing to npm, webpack, parcel</p>
+                  <p>History of module systems in JS to now, npm, webpack</p>
                 </li>
                 <li>
                   <h2>Vue ecosystem</h2>
@@ -451,8 +447,10 @@
                 <div class="column">
                   <h2>In the beginning...</h2>
                   <br>
-                  <ul>
+                  <ul class="flexblock specs">
                     <li class="text-intro">Where does the browser assume index.js is located?</li>
+                    <li class="text-intro">Try making the h1.textContent come from index.js - error?</li>
+                    <li class="text-intro">Does placement of the script matter? (parsing discussion)</li>
                   </ul>
                 </div>
               </div>
@@ -553,7 +551,7 @@
                     <div class="grid vertical-align">
                       <div class="column">
           
-          
+                          <a href="https://momentjs.com/"><img src="./static/images/npminstall.PNG" alt="npm install moment"></a>
                         <div class="bg-white shadow">
     <pre><code><h5>// create package.json file to keep track of configs
 npm init -y
@@ -564,7 +562,7 @@ npm i moment
                         </div>
                       </div>
                       <div class="column">
-                        <h2>The npm way <a href="https://momentjs.com/"><img src="./static/images/npminstall.PNG" alt="npm install moment"></a></h2>
+                        <h2>The npm way</h2>
                         
                         <ul class="flexblock specs">
                           <li class="text-intro">npm command downloads moment.js into a folder called node_modules/</li>
@@ -783,21 +781,59 @@ vue create my-app
             <!-- .end .wrap -->
           </section>          
 
-          <section class="bg-secondary">
-              <!-- .wrap = container (width: 90%) -->
-              <div class="wrap size-50 frame">
-                <h2 class="text-serif aligncenter">Break 15 mins</h2>
-                <p class="aligncenter">
-                  <a href="http://aws.computerstudi.es/~gc800182472/"
-                    >Start timer</a
-                  >
-                </p>
-    
-              </div>
-            </section>
+      <section class="bg-secondary">
+          <!-- .wrap = container (width: 90%) -->
+          <div class="wrap size-50 frame">
+            <h2 class="text-serif aligncenter">In-class exercise 11 + Break</h2>
+            <h2 class="text-serif aligncenter">10 mins + 15 mins</h2>
+            <p class="aligncenter">
+              <a href="http://aws.computerstudi.es/~gc800182472/"
+                >Start timer</a
+              >
+            </p>
+<ul class="flexblock specs">
+  <li class="text-intro"><a href="https://2018.stateofjs.com/front-end-frameworks/overview">https://2018.stateofjs.com/front-end-frameworks/overview</a></li>
+  <li class="text-intro"><a href="https://twitter.com/VuejsJob">https://twitter.com/VuejsJob</a></li>
+</ul>
+          </div>
+   </section>
 
 
 
+
+   <section class="">
+      <!--.wrap = container (width: 90%) -->
+      <div class="wrap size-80 aligncenter">
+        <div class="grid vertical-align">
+          <div class="column">
+            <img src="./static/images/closure.PNG" alt="closure" style="width:100%">
+          </div>
+          <div class="column">
+            <h1><a href="https://github.com/avcoder/weekOf-Dec13/blob/master/02-closures/02-closure.md">Closures</a></h1>
+            <p class="text-intro">Whenever you declare a new function and assign it to a variable, you store the function definition, as well as a closure. The closure contains all the variables that are in scope at the time of creation of the function. It is analogous to a backpack. A function definition comes with a little backpack. And in its pack it stores all the variables that were in scope at the time that the function definition was created.</p>
+          </div>
+        </div>
+        <!-- .end .bg-white shadow -->
+      </div>
+      <!-- .end .wrap -->
+  </section>   
+
+
+<section class="bg-black">
+    <!--.wrap = container (width: 90%) -->
+    <div class="wrap size-50 aligncenter">
+      <div class="grid vertical-align">
+        <div class="column">
+          <h3>https://unpkg.com/mywords@1.0.2/index.js</h3>
+            
+        </div>
+      </div>
+      <!-- .end .bg-white shadow -->
+    </div>
+    <!-- .end .wrap -->
+</section>   
+
+            
 
         <section>
           <!-- .wrap = container (width: 90%) -->
@@ -810,7 +846,7 @@ vue create my-app
             </li>
             <li>https://www.youtube.com/watch?v=mJTeWEZLO_4</li>
             <li>https://developers.google.com/web/fundamentals/primers/modules</li>
-            <li></li>
+            <li>https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8</li>
           </ol>
 
           <!-- .end .wrap -->
