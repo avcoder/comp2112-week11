@@ -459,18 +459,6 @@
             <!-- .end .wrap -->
           </section>
 
-          <section class="">
-              <!--.wrap = container (width: 90%) -->
-              <div class="wrap size-90 aligncenter">
-                <div class="grid vertical-align">
-                  <div class="column">
-                      <img src="./static/images/async-defer.svg" alt="async defer differences">
-                  </div>
-                </div>
-                <!-- .end .bg-white shadow -->
-              </div>
-              <!-- .end .wrap -->
-            </section>          
 
           <section class="bg-primary">
               <!--.wrap = container (width: 90%) -->
@@ -785,7 +773,7 @@ vue create my-app
           <!-- .wrap = container (width: 90%) -->
           <div class="wrap size-50 frame">
             <h2 class="text-serif aligncenter">In-class exercise 11 + Break</h2>
-            <h2 class="text-serif aligncenter">10 mins + 15 mins</h2>
+            <h2 class="text-serif aligncenter">10 mins + 10 mins</h2>
             <p class="aligncenter">
               <a href="http://aws.computerstudi.es/~gc800182472/"
                 >Start timer</a
@@ -811,6 +799,7 @@ vue create my-app
           <div class="column">
             <h1><a href="https://github.com/avcoder/weekOf-Dec13/blob/master/02-closures/02-closure.md">Closures</a></h1>
             <p class="text-intro">Whenever you declare a new function and assign it to a variable, you store the function definition, as well as a closure. The closure contains all the variables that are in scope at the time of creation of the function. It is analogous to a backpack. A function definition comes with a little backpack. And in its pack it stores all the variables that were in scope at the time that the function definition was created.</p>
+            <p class="text-intro"><strong>Closures form the basis of modules</strong></p>
           </div>
         </div>
         <!-- .end .bg-white shadow -->
@@ -821,11 +810,40 @@ vue create my-app
 
 <section class="bg-black">
     <!--.wrap = container (width: 90%) -->
-    <div class="wrap size-50 aligncenter">
+    <div class="wrap size-100 aligncenter">
       <div class="grid vertical-align">
         <div class="column">
-          <h3>https://unpkg.com/mywords@1.0.2/index.js</h3>
-            
+<pre><code><h5>// create lib.mjs
+export const repeat = (string) => `${string} ${string}`;
+export function shout(string) {
+  return `${string.toUpperCase()}!`;
+}
+</h5></code></pre> 
+    <br>
+<pre><code><h5>// to import it then use it:
+import { repeat, shout } from "./lib.mjs";
+
+console.log(repeat("hi"));
+console.log(shout("world"));
+</h5></code></pre>   
+        <br>
+<pre><code><h5>// change lib.mjs
+export default function shout(string) {
+  return `${string.toUpperCase()}!`;
+}
+</h5></code></pre> 
+        </div>
+        <div class="column">
+          <h3>ES Modules</h3>
+          <ul class="flexblock reasons">
+            <li class="text-content" title="need a server for modules">Create 2 webpages, one that uses regular script, and other a module - What's the difference?</li>
+            <li class="text-content" title="modules have top lexical scope, no globals">Assign for both: var a = true; console.log(window); - difference?</li>
+            <li class="text-content">Create lib.mjs</li>
+            <li class="text-content" title="import doesn't work on classic scripts">import it then use it on both - difference?</li>
+            <li class="text-content">Could also export a default, then import whatever from "./lib.mjs";</li>
+          </ul>
+          <br><br>
+            <p class="">Because of these differences, the same JavaScript code might behave differently when treated as a module vs. a classic script. As such, the JavaScript runtime needs to know which scripts are modules</p>
         </div>
       </div>
       <!-- .end .bg-white shadow -->
@@ -834,6 +852,81 @@ vue create my-app
 </section>   
 
             
+<section class="bg-primary">
+    <!--.wrap = container (width: 90%) -->
+    <div class="wrap size-100 aligncenter">
+      <div class="grid vertical-align">
+        <div class="column">
+            <h3>type="module" vs nomodule</h3>
+<pre><code><h5>&lt;script type="module" src="main.mjs">&lt;/script>
+&lt;script nomodule src="fallback.js">&lt;/script>
+</h5></code></pre> 
+<p><a href="https://developers.google.com/web/fundamentals/primers/modules#intro">See dynamic imports, and performance recommendations</a></p>
+        </div>
+        <div class="column">
+          
+          <ul class="flexblock reasons">
+            <li class="text-intro">Browsers that understand type="module" ignore scripts with a nomodule attribute</li>
+            <li class="text-intro">If a browser understands your module code, it also supports features that were around before modules, such as arrow functions or async-await.</li>
+            <li class="text-intro">So you don’t have to transpile using bundlers such as webpack, or parcel</li>
+            <li class="text-intro">.mjs or .js - file extension doesn't really matter, but it's convention to use .mjs to make it clear it's a module, and to be consistent with node</li>
+            <li class="text-intro">Make sure your path, for module specifier, is absolute or relative</li>
+          </ul>
+        </div>
+      </div>
+      <!-- .end .bg-white shadow -->
+    </div>
+    <!-- .end .wrap -->
+</section>   
+
+<section class="">
+    <!--.wrap = container (width: 90%) -->
+    <div class="wrap size-90 aligncenter">
+      <div class="grid vertical-align">
+        <div class="column">
+            <img src="./static/images/async-defer.svg" alt="async defer differences">
+        </div>
+      </div>
+      <!-- .end .bg-white shadow -->
+    </div>
+    <!-- .end .wrap -->
+  </section>          
+
+  <section class="bg-green">
+      <!--.wrap = container (width: 90%) -->
+      <div class="wrap size-90 aligncenter">
+        <div class="grid vertical-align">
+            <h1 class="wrap aligncenter"> Vue ecosystem</h1>
+          <div class="column">
+            <ul class="flexblock specs">
+              <li class="text-intro">vue ui (cli)</li>
+              <li class="text-intro"><a href="">Storybook</a></li>
+              <li class="text-intro"><a href="">Vuetify</a></li>
+              <li class="text-intro"><a href="">Vuex</a></li>
+              <li class="text-intro"><a href="">Router</a></li>
+            </ul> 
+          </div>
+          <div class="column">
+            <ul class="flexblock specs">
+                <li class="text-intro"><a href="">Testing (Jest, Cypress)</a></li>
+                <li class="text-intro"><a href="">Vue Native</a></li>
+                <li class="text-intro"><a href="">nuxt.js</a></li>
+                <li class="text-intro"><a href="">Vuepress</a></li>
+                <li class="text-intro"><a href="">GraphQL</a></li>
+              </ul>     
+          </div>
+        </div>
+        <!-- .end .bg-white shadow -->
+      </div>
+      <!-- .end .wrap -->
+  </section>   
+
+
+
+
+
+
+
 
         <section>
           <!-- .wrap = container (width: 90%) -->
@@ -847,6 +940,7 @@ vue create my-app
             <li>https://www.youtube.com/watch?v=mJTeWEZLO_4</li>
             <li>https://developers.google.com/web/fundamentals/primers/modules</li>
             <li>https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8</li>
+            <li>https://medium.com/@thejasonfile/a-simple-intro-to-javascript-imports-and-exports-389dd53c3fac</li>
           </ol>
 
           <!-- .end .wrap -->
