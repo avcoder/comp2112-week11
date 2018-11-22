@@ -1,0 +1,17 @@
+{
+  "name": "temp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build index2.html",
+    "serve": "parcel index2.html"
+  },
+  "keywords": [],
+  "author": "avcoder <code.rom7.6@gmail.com> (http://twitter.com/libtechdev)",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "2.22.2"
+  }
+}
